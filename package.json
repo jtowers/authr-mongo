@@ -1,0 +1,32 @@
+{
+  "name": "authr-mongo",
+  "version": "0.0.1",
+  "description": "MongoDB adapter for authr",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:jtowers/authr-mongo.git"
+  },
+  "keywords": [
+    "authorization",
+    "security"
+  ],
+  "author": "John Towers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jtowers/authr-mongo/issues"
+  },
+  "homepage": "https://github.com/jtowers/authr-mongo",
+  "dependencies": {
+    "moment": "~2.8.1",
+    "mongodb": "~1.4.8",
+    "bcrypt": "~0.8.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  }
+}
