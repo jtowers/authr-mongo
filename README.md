@@ -15,6 +15,62 @@ See the [main project](https://github.com/jtowers/authr-mongo) for instructions 
 
 `npm install authr authr-mongo --save`
 
-```js
-asdf
-  ```
+2. Specify mongodb as your database type in the authr config:
+
+```
+var Authr = require('authr');
+
+var config = {
+	db: {
+		type: 'mongodb',
+		host: 'localhost',
+		port: 27017,
+		database_name: 'some_db',
+		collection: 'some_collection'
+	}
+}
+
+var authr = new Authr(config);
+```
+You can also preserve document nesting by specifying the location for essential values in your user config
+
+```
+var Authr = require('authr');
+
+var config = {
+	user:{
+  	username: 'account.username'
+  },
+	db: {
+		type: 'mongodb',
+		host: 'localhost',
+		port: 27017,
+		database_name: 'some_db',
+		collection: 'some_collection'
+	}
+}
+
+```
+
+With the above configuration, your mongo documents can look like this:
+```
+{
+	account: {
+		username: 'jtowers'
+	}
+}
+```
+
+And the adapter will save new user information to the appropriate path.
+
+## Features
+
+User signup
+
+## Todo
+...everything else.
+
+1. Implement account verification
+2. Implement login
+3. Implement account recovery
+4. Implement account deletion
