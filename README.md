@@ -1,6 +1,8 @@
 authr-mongo
 ===========
 
+[![Build Status](https://travis-ci.org/jtowers/authr-mongo.svg?branch=master)](https://travis-ci.org/jtowers/authr-mongo)
+
 MongoDB adapter for authr module.
 
 This is used internally by authr to interact with user data saved in MongoDb.
