@@ -2,6 +2,8 @@ authr-mongo
 ===========
 
 [![Build Status](https://travis-ci.org/jtowers/authr-mongo.svg?branch=master)](https://travis-ci.org/jtowers/authr-mongo)
+[![NPM version](https://badge.fury.io/js/authr-mongo.svg)](http://badge.fury.io/js/authr-mongo)
+[![Dependencies](https://david-dm.org/jtowers/authr-mongo.png)](https://david-dm.org/jtowers/authr-mongo)
 
 MongoDB adapter for authr module.
 
