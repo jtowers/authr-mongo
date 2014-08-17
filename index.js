@@ -208,7 +208,7 @@ Adapter.prototype.doEmailVerification = function(callback){
  */
 Adapter.prototype.saveUser = function(callback){
   this.db.collection(this.config.db.collection).insert(this.signup, function(err, doc){
-    return callback(err, doc);
+    return callback(err,doc[0]);
   });
 };
 

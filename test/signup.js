@@ -28,7 +28,7 @@ describe('signup', function () {
       },
       security: {
         hash_password: true,
-        hash_salt_factor: 10,
+        hash_salt_factor: 1, // reduce salt work factor for testing
         max_failed_login_attempts: 10,
         reset_attempts_after_minutes: 5,
         lock_account_for_minutes: 30,
