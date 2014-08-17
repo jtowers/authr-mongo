@@ -212,6 +212,13 @@ Adapter.prototype.saveUser = function(callback){
   });
 };
 
+/**
+ * Remove the collection. Mostly used for testing. Will probably find a use for it.
+ * @function
+ * @name resetCollection
+ * @param {Callback} callback - Execute callback when finished dropping the collection
+ * @return {Callback}
+ */ 
 Adapter.prototype.resetCollection = function(callback){
   this.db.collection(this.config.db.collection).remove(function(err){
     callback(err);
