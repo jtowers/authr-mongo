@@ -97,14 +97,14 @@ Adapter.prototype.connect = function(callback){
   var url = 'mongodb://' + this.config.db.host + ':' + this.config.db.port + '/' + this.config.db.database_name;
   MongoClient.connect(url, function(err, db){
 
-    if(!err){
+    if(err){
+      throw err;
+    }
       db.createCollection(self.config.db.collection, function(err, collection) {
-        self.setDb(db);
+        self.db = db;
         callback(err);
       });
-    } else {
-      callback(err);
-    }
+
   });
 };
 
@@ -157,23 +157,19 @@ Adapter.prototype.signupConfig = function(signup){
  * @return {Function}
  */
 Adapter.prototype.isUsernameTaken = function(cb){
-  var taken;
   var username = this.getVal(this.signup, this.config.user.username);
-  console.log('username: ' + this.signup.account.username);
-  console.log('username: ' + this.config.user.username);
-  console.log('username: ' + username);
-  var queryObject = this.buildQuery({},this.config.user.username, username);
+  //var queryObject = this.buildQuery({},this.config.user.username, username);
+  var queryObject = JSON.parse('{"' + this.config.user.username + '":"' + username + '"}');
   var self = this;
   this.db.collection(this.config.db.collection).findOne(queryObject, function(err, doc){
     if(err){
-      return cb(err, null);
-    } else {
+      throw err;
+    }
       if(doc){
         return cb(null, true);
       } else {
         return cb(null, false);
       }
-    }
   });
 
 };
@@ -282,6 +278,12 @@ Adapter.prototype.doEmailVerification = function(callback){
 Adapter.prototype.saveUser = function(callback){
   this.db.collection(this.config.db.collection).insert(this.signup, function(err, doc){
     return callback(err, doc);
+  });
+};
+
+Adapter.prototype.resetCollection = function(callback){
+  this.db.collection(this.config.db.collection).remove(function(err){
+    callback(err);
   });
 };
 
