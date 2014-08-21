@@ -106,6 +106,8 @@ Adapter.prototype.isUsernameTaken = function(cb){
 };
 
 
+
+
 /**
  * Look up a key's value when given the path as a string mimicing dot-notation.
  * Used recreate the user object with the correct keys and proper nesting before inserting the document
