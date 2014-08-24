@@ -25,3 +25,11 @@ it('should have the right db config', function (done) {
       });
     });
   });
+
+db: {
+        type: 'mongodb',
+        host: 'localhost',
+        port: 27017,
+        database_name: 'testdb',
+        collection: 'users'
+      },
