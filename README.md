@@ -2,14 +2,13 @@ authr-mongo
 ===========
 
 [![Build Status](https://travis-ci.org/jtowers/authr-mongo.svg?branch=master)](https://travis-ci.org/jtowers/authr-mongo)
-[![NPM version](https://badge.fury.io/js/authr-mongo.svg)](http://badge.fury.io/js/authr-mongo)
-[![Dependencies](https://david-dm.org/jtowers/authr-mongo.png)](https://david-dm.org/jtowers/authr-mongo)
+
 
 MongoDB adapter for authr module.
 
 This is used internally by authr to interact with user data saved in MongoDb.
 
-See the [main project](https://github.com/jtowers/authr-mongo) for instructions for how to use authr.
+See the [main project](https://github.com/jtowers/authr) for instructions for how to use authr.
 
 ## Using the adapter
 
@@ -70,9 +69,4 @@ And the adapter will save new user information to the appropriate path.
 User signup
 
 ## Todo
-...everything else.
-
-1. Implement account verification
-2. Implement login
-3. Implement account recovery
-4. Implement account deletion
+...?
