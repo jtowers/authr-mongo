@@ -11,8 +11,9 @@ var moment = require('moment');
  * @class
  * @param {object} config - Authr config object
  */
-function Adapter(config){
-  this.config = config;
+
+function Adapter(config) {
+    this.config = config;
 }
 
 /**
@@ -22,23 +23,22 @@ function Adapter(config){
  * @param {Callback} callback - execute callback after connection
  * @return {Callback}
  */
-Adapter.prototype.connect = function(callback){
+Adapter.prototype.connect = function (callback) {
 
-  var self = this;
-  var url = 'mongodb://' + this.config.db.host + ':' + this.config.db.port + '/' + this.config.db.database_name;
-  MongoClient.connect(url, function(err, db){
+    var self = this;
+    var url = 'mongodb://' + this.config.db.host + ':' + this.config.db.port + '/' + this.config.db.database_name;
+    MongoClient.connect(url, function (err, db) {
 
-    if(err){
-      throw err;
-    }
-      db.createCollection(self.config.db.collection, function(err, collection) {
-        self.db = db;
-        callback(err);
-      });
+        if(err) {
+            throw err;
+        }
+        db.createCollection(self.config.db.collection, function (err, collection) {
+            self.db = db;
+            callback(err);
+        });
 
-  });
+    });
 };
-
 
 /**
  * Disconnect from database when finished
@@ -47,14 +47,13 @@ Adapter.prototype.connect = function(callback){
  * @param {Adapter~onDisconnect} callback - execute a callback after disconnect
  * @return {Callback}
  */
-Adapter.prototype.disconnect = function(callback){
-  this.db.close(function(err){
-    if(callback){
-      return callback(err);
-    }
-  });
+Adapter.prototype.disconnect = function (callback) {
+    this.db.close(function (err) {
+        if(callback) {
+            return callback(err);
+        }
+    });
 };
-
 
 /**
  * Check to see if a value exists in the database. Supply the source object and the path to the value to be checked
@@ -398,9 +397,10 @@ Adapter.prototype.buildAccountSecurity = function (obj) {
  * @param {saveUserCallback} callback - Run a callback after the user has been inserted
  */
 Adapter.prototype.saveUser = function (user, callback) {
+    user = this.buildQuery(user, this.config.user.username, this.getVal(user, this.config.user.username).toString().toLowerCase());
     this.db.collection(this.config.db.collection).insert(user, function (err, doc) {
-        if(doc){
-           return callback(err, doc[0]);
+        if(doc) {
+            return callback(err, doc[0]);
         } else {
             return callback(new Error('User could not be saved'));
         }
