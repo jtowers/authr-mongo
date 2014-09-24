@@ -26,7 +26,11 @@ function Adapter(config) {
 Adapter.prototype.connect = function (callback) {
 
     var self = this;
-    var url = 'mongodb://' + this.config.db.host + ':' + this.config.db.port + '/' + this.config.db.database_name;
+    var prefix = 'mongodb://';
+    if(this.config.db.username){
+        prefix = prefix + this.config.db.username + ":" + this.config.db.password + "@";
+    }
+    var url = prefix + this.config.db.host + ':' + this.config.db.port + '/' + this.config.db.database_name;
     MongoClient.connect(url, function (err, db) {
 
         if(err) {
